@@ -23,6 +23,19 @@ finish-args:
 modules:
   - shared-modules/libsecret/libsecret.json
 
+  - name: zypak
+    sources:
+      - type: git
+        url: https://github.com/refi64/zypak
+        tag: v2020.10beta.4
+
+  - name: flextop
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/refi64/flextop
+        commit: b8ca6d9952a9f5d40df99903448c3fa7ccea80ee
+
   - name: caprine
     buildsystem: simple
     build-commands:
@@ -30,8 +43,9 @@ modules:
       - tar --extract --file=data.tar.xz
       - cp --preserve --recursive opt/* usr/* /app
       - desktop-file-edit --set-key=Exec --set-value="/app/bin/caprine %U" /app/share/applications/caprine.desktop
-      - install -D --mode=0755 entrypoint.sh /app/bin/caprine
+      - install -D --mode=0755 caprine.sh /app/bin/caprine
       - install -D --mode=0644 --target-directory=/app/share/metainfo/ com.sindresorhus.Caprine.metainfo.xml
+
     sources:
       - type: file
         dest-filename: caprine.deb
@@ -45,4 +59,4 @@ modules:
       - type: file
         path: com.sindresorhus.Caprine.metainfo.xml
       - type: file
-        path: entrypoint.sh
+        path: caprine.sh
