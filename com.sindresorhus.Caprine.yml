@@ -1,4 +1,3 @@
----
 app-id: com.sindresorhus.Caprine
 base: org.electronjs.Electron2.BaseApp
 base-version: "20.08"
