@@ -30,7 +30,7 @@ modules:
       - tar --extract --file=data.tar.xz
       - cp --preserve --recursive opt/* usr/* /app
       - desktop-file-edit --set-key=Exec --set-value="/app/bin/caprine %U" /app/share/applications/caprine.desktop
-      - install -D --mode=0755 entrypoint.sh /app/bin/caprine
+      - install -D --mode=0755 caprine.sh /app/bin/caprine
       - install -D --mode=0644 --target-directory=/app/share/metainfo/ com.sindresorhus.Caprine.metainfo.xml
     sources:
       - type: file
@@ -45,4 +45,4 @@ modules:
       - type: file
         path: com.sindresorhus.Caprine.metainfo.xml
       - type: file
-        path: entrypoint.sh
+        path: caprine.sh
